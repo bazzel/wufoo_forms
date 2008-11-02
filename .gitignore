@@ -1,0 +1,15 @@
+log/*
+tmp/*
+database.yml
+*.sqlite
+*.sqlite3
+schema.rb
+doc/api
+.DS_Store
+.svn
+public/image_assets/*
+coverage
+coverage.data
+doc/app
+doc/plugins
+config/initializers/mail.rb
