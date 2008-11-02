@@ -1,0 +1,10 @@
+<% title "Join Our Mailing List" %>
+<% wufoo_form_for @foo, :url => foo_path('create'), :html => {:title => "Wufoo"} do |f| %>
+  <%= hidden_field_tag('page', 'mailing_list') %>
+  <%= form_title(yield(:title), 'Stay up to date on the latest news and info!') -%>
+  <% content_tag :ul do -%>
+    <%= f.error_messages %>
+    <%= f.text_field :req_field_1, :length => 'large', :label => "Your Email Address" %>
+    <%= f.submit %>
+  <% end %>
+<% end %>

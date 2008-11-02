@@ -1,0 +1,74 @@
+/*
+Modifications to BlueprintCSS to persist the look of Wufoo forms
+*/
+
+.wufoo {
+line-height:1;
+font-family:"Lucida Grande",Tahoma,Arial,sans-serif;
+}
+
+.wufoo input.text:focus,.wufoo textarea:focus,.wufoo select:focus {
+border-color:#7C7C7C #C3C3C3 #DDDDDD;
+border-style:solid;
+border-width:1px;
+}
+
+.wufoo input.text {
+width:inherit;
+}
+
+.wufoo input.small,.wufoo select.small {
+width:25%;
+}
+
+.wufoo input.medium,.wufoo select.medium {
+width:50%;
+}
+
+.wufoo #errorMsgLbl {
+font-weight:700;
+}
+
+.wufoo li.error {
+border:1px solid #F9B9B2;
+margin-bottom:0;
+padding:4px 5px 2px 9px;
+}
+
+.wufoo li.error p.error {
+background-color:inherit;
+border:0 solid #FFDFDF !important;
+padding:0;
+}
+
+.wufoo li.leftHalf,.wufoo li.rightHalf {
+width:46% !important;
+}
+
+.wufoo li.leftHalf .medium,.wufoo li.rightHalf .medium,.wufoo li.leftHalf .small,.wufoo li.rightHalf .small {
+width:100%;
+}
+
+.wufoo li.leftHalf .icon,.wufoo li.rightHalf .icon,.wufoo li.leftHalf .icon,.wufoo li.rightHalf .icon {
+width:90%;
+}
+
+.wufoo textarea.textarea {
+padding:0;
+}
+
+.wufoo input.large,.wufoo select.large,.wufoo textarea.textarea,.wufoo input.addr {
+width:100%;
+}
+
+.calendar_date_select th, .calendar_date_select td {
+ padding:0;
+ }
+ 
+ /* Experimental */
+ /*.wufoo ul li {
+   border:1px dotted transparent;
+   }
+ .wufoo ul li:hover {
+  border: 1px dashed #000;
+ }*/

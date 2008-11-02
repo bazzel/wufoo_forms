@@ -1,0 +1,9 @@
+<% unless li_class -%>
+<li class="error">
+	<%= label %><%= element %><p class="error"><%= error %></p>
+</li>
+<% else -%>
+<li class="error <%= li_class %>">
+	<%= label %><%= element %><p class="error"><%= error %></p>
+</li>
+<% end -%>

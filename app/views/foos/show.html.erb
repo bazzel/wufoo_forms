@@ -1,0 +1,11 @@
+<% title "Foo" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @foo.field_title %>
+</p>
+<p>
+  <%= link_to "Edit", edit_foo_path(@foo) %> |
+  <%= link_to "Destroy", @foo, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", foos_path %>
+</p>

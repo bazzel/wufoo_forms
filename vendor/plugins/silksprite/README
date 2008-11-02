@@ -1,0 +1,23 @@
+Silksprite
+==========
+
+Rails helper for Silksprite
+http://www.ajaxbestiary.com/Labs/SilkSprite/
+
+How to use
+==========
+include stylesheets in your layout file:
+  <%= silksprite_stylesheets %>
+
+To place a icon on your page:
+  <%= silksprite symbol %>
+where symbol is the name of the sprite.
+
+
+Example
+=======
+ silksprite(:tick)
+ # => <span class="ss_sprite ss_tick">&nbsp;</span>
+ 
+
+Copyright (c) 2008 Kabisa ICT, released under the MIT license

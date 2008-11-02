@@ -1,0 +1,61 @@
+<% title "Emergency Contact and Medical Information" %>
+<% wufoo_form_for @foo, :url => foo_path('create'), :html => {:title => "Wufoo"} do |f| %>
+  <%= hidden_field_tag('page', 'emergency_contact') %>
+  <%= form_title yield(:title) -%>
+  <% content_tag :ul do -%>
+    <%= f.error_messages %>
+    <% f.box :field_1, :label => "Name" do -%>
+      <%= f.text_field :field_2, :label => 'First', :size => 8 %>
+      <%= f.text_field :field_3, :label => 'Last', :size => 17 %>
+    <% end -%>
+    
+    <%= f.select :field_4, 
+  								['Male', 'Female'], {},
+  								:label => 'Gender', :position => 'left' %>
+    <%= f.calendar_date_select :field_5, 
+            									 :year_range => 3.years.ago..0.years.ago, 
+            									 :buttons => false,
+            									 :label => 'Date of Birth',
+            									 :position => 'right' %>
+
+    <%= f.section 'Emergency Contact' %>
+    <% f.box :field_6, :label => "Name", :position => 'left' do -%>
+      <%= f.text_field :field_7, :label => 'First', :size => 8 %>
+      <%= f.text_field :field_8, :label => 'Last', :size => 14 %>
+    <% end -%>
+    <%= f.text_field :field_9, :label => 'Relationship', :position => 'right' %>
+    <% f.canvas :field_10, :label => "Address" do -%>
+      <%= f.text_field :field_11, :label => 'Street Address' %>
+      <%= f.text_field :field_12, :label => 'Address Line 2' %>
+      <%= f.text_field :field_13, :label => 'City', :position => 'left' %>
+      <%= f.text_field :field_14, :label => 'State / Province / Region', :position => 'right' %>
+      <%= f.text_field :field_15, :label => 'Postal / Zip Code', :position => 'left' %>
+      <%= f.country_select :field_16, nil, {},:label => 'Country', :position => 'right' %>
+    <% end -%>
+    <% f.box :field_17, :label => "Home Phone", :position => 'left' do -%>
+      <%= f.text_field :field_18, :label => '(###)', :size => 3, :suffix => '-' %>
+      <%= f.text_field :field_19, :label => '###', :size => 3, :suffix => '-' %>
+      <%= f.text_field :field_20, :label => '####', :size => 5 %>
+    <% end -%>
+    <% f.box :field_21, :label => "Work Phone", :position => 'right' do -%>
+      <%= f.text_field :field_22, :label => '(###)', :size => 3, :suffix => '-' %>
+      <%= f.text_field :field_23, :label => '###', :size => 3, :suffix => '-' %>
+      <%= f.text_field :field_24, :label => '####', :size => 5 %>
+    <% end -%>
+
+    <%= f.section 'Medical Information' %>
+    <%= f.text_field :field_24, :length => 'large', :label => " Hospital / Clinic Preference " %>
+    <%= f.text_field :field_25, :label => ' Insurance Company ', :position => 'left' %>
+    <%= f.text_field :field_26, :label => ' Policy Number ', :position => 'right' %>
+
+    <%= f.text_field :field_27, :label => " Physician's Name ", :position => 'left' %>
+    <% f.box :field_28, :label => "Phone number", :position => 'right' do -%>
+      <%= f.text_field :field_29, :label => '(###)', :size => 3, :suffix => '-' %>
+      <%= f.text_field :field_0, :label => '###', :size => 3, :suffix => '-' %>
+      <%= f.text_field :field_1, :label => '####', :size => 5 %>
+    <% end -%>
+    <%= f.text_area :field_2, 
+                    :label => ' Allergies / Special Health Considerations ' %>
+  <%= f.submit %>
+  <% end %>
+<% end %>

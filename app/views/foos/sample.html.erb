@@ -1,0 +1,71 @@
+<% title "Title" %>
+<% wufoo_form_for @foo, :url => foo_path('create'), :html => {:title => "Wufoo"} do |f| %>
+  <%= hidden_field_tag('page', 'sample') %>
+  <%= form_title(yield(:title), 'Description') -%>
+  <% content_tag :ul do -%>
+    <%= f.section 'Section Title', 'Description of the section.', true %>
+    <%= f.error_messages %>
+    <%= f.text_area :req_field_1, 
+                    :label => 'Field Title',
+                    :balloon => "Instructions for the user. Robots are typically used to do the tasks that are too dirty, dangerous, difficult, repetitive or dull for humans.<br><br>Chris is Wufoo's robot." %>
+    <%= f.text_field :field_2, :length => 'small', :label => "Small Field" %>
+    <%= f.text_field :field_3, :length => 'medium', :label => "Medium Field" %>
+    <%= f.text_field :field_4, :length => 'large', :label => "Large Field" %>
+    <%= f.section 'Section Title', 'Description of another section.' %>
+    <% f.radio_button_group :field_5, :label => "Multiple  Choice" do %>
+      <% ['Robots', 'Monkeys', 'Ninjas'].each do |e| -%>
+      <%= f.radio_button(:field_5, e, :label => e) %>
+      <% end -%>
+    <% end -%>
+
+    <% f.check_box_group :field_6 do %>
+      <% ['Invisibility', 'Super Strength', 'Eye Lasers'].each do |e| -%>
+				  <%= f.check_box_tag("for[bar_ids][]", 
+            								  e, 
+            								  false, 
+            								  :label => e ) %>
+      <% end -%>
+    <% end -%>
+    
+    <%= f.section 'Section Title', 'Description of another section.' %>
+    
+    <% f.box :field_7, :label => "Name" do -%>
+      <%= f.text_field :field_8, :label => 'Title', :size => 2 %>
+      <%= f.text_field :field_9, :label => 'First', :size => 8 %>
+      <%= f.text_field :field_10, :label => 'Last', :size => 14 %>
+      <%= f.text_field :field_11, :label => 'Suffix', :size => 3 %>
+    <% end -%>
+
+    <% f.box :field_12, :label => "Phone" do -%>
+      <%= f.text_field :field_13, :label => '(###)', :size => 3, :suffix => '-' %>
+      <%= f.text_field :field_14, :label => '###', :size => 3, :suffix => '-' %>
+      <%= f.text_field :field_15, :label => '####', :size => 4 %>
+    <% end -%>
+
+    <% f.box :field_16, :label => "Price" do -%>
+      <%= f.text_field :field_17, :label => 'Dollars', :size => 10, :prefix => "$", :suffix => '.' %>
+      <%= f.text_field :field_18, :label => 'Cents', :size => 2 %>
+    <% end -%>
+
+    <% f.canvas :field_19, :label => "Address" do -%>
+      <%= f.text_field :field_20, :label => 'Street Address' %>
+      <%= f.text_field :field_21, :label => 'Address Line 2' %>
+      <%= f.text_field :field_22, :label => 'City', :position => 'left' %>
+      <%= f.text_field :field_23, :label => 'State / Province / Region', :position => 'right' %>
+      <%= f.text_field :field_24, :label => 'Postal / Zip Code', :position => 'left' %>
+      <%= f.country_select :field_25, nil, {},:label => 'Country', :position => 'right' %>
+    <% end -%>
+
+    <%= f.section 'Section Title', 'Description of another section.' %>
+    <%= f.select :field_26, 
+  								['Invisibility', 'Super Strength', 'Eye Lasers'], 
+  								{ :prompt => true } %>
+
+    <%= f.calendar_date_select :field_27, 
+            									 :year_range => 3.years.ago..0.years.ago, 
+            									 :buttons => false %>
+  	<%= f.file_field(:field_28, :label => 'File Upload') %>
+
+    <%= f.submit "Save", :cancel => {:title => 'Cancel', :url => foo_path('index') } %>
+    <% end -%>
+    <% end -%>

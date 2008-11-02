@@ -1,0 +1,44 @@
+<% title "Employment Application" %>
+<% wufoo_form_for @foo, :url => foo_path('create'), :html => {:title => "Wufoo"} do |f| %>
+  <%= hidden_field_tag('page', 'employment_application') %>
+  <%= form_title(yield(:title), 'Infinity Box Inc.') -%>
+  <% content_tag :ul do -%>
+    <%= f.error_messages %>
+    <%= f.select :req_field_1, 
+  								['Interface Designer', 'Software Engineer', 'System Administrator', 'Office Manager'], 
+  								{ :include_blank => true },
+  								:label => 'Which position are you applying for?' %>
+    <% f.radio_button_group :req_field_2, :label => "Are you willing to relocate?" do %>
+      <% ['Yes', 'No'].each do |e| -%>
+        <%= f.radio_button(:req_field_2, e, :label => e) %>
+      <% end -%>
+    <% end -%>
+		<%= f.calendar_date_select :req_field_3, 
+            									 :year_range => 0.year.from_now..1.year.from_now, 
+            									 :buttons => false,
+            									 :label => 'When can you start?' %>
+    <%= f.text_field :field_1, :label => 'Portfolio Web Site', :length => 'large' %>
+    <%= f.file_field(:field_2, :label => 'Attach a Copy of Your Resume', :caption => 'Word of PDF Documents Only') %>
+    
+    <% f.box :field_3, :label => "Salary Requirements" do -%>
+      <span class='symbol'>$</span>
+      <%= f.text_field :field_4, :label => 'Dollars', :size => 10, :suffix => '.' %>
+      <%= f.text_field :field_5, :label => 'Cents', :size => 2 %>
+    <% end -%>
+    
+    <%= f.section 'Your Contact Information' %>
+    <% f.box :req_field_4, :label => "Name" do -%>
+      <%= f.text_field :req_field_5, :label => 'First', :size => 8 %>
+      <%= f.text_field :req_field_6, :label => 'Last', :size => 14 %>
+    <% end -%>
+    <%= f.text_field :req_field_7, :label => 'Email Address', :length => 'large' %>
+    
+    <% f.box :req_field_8, :label => "Phone" do -%>
+      <%= f.text_field :req_field_9, :label => '(###)', :size => 3, :suffix => '-' %>
+      <%= f.text_field :req_field_10, :label => '###', :size => 3, :suffix => '-' %>
+      <%= f.text_field :req_field_11, :label => '####', :size => 4 %>
+    <% end -%>
+
+  <%= f.submit %>
+  <% end %>
+<% end %>

@@ -1,0 +1,111 @@
+Wufoo
+=====
+
+Requirements
+============
+The following plugins are needed for the Wufoo plugin to work properly.
+If these plugins are not installed, Wufoo will still work, but is not fully functional.
+
+ * Nifty Layout
+   Part of Ryan Bates' Nifty Generators
+   Install once with: 
+     gem install nifty-generators
+   Then run from your Rails project root directory:
+     script/generate nifty_layout
+   This will give you a LayoutHelper and put a yield(:head) method in your application.html.rb
+ * Validation Reflection
+   script/plugin install git://github.com/redinger/validation_reflection.git 
+ * FileColumn
+   script/plugin install git://github.com/tekin/file_column.git
+ * CalendarDateSelect
+   script/plugin install git://github.com/timcharper/calendar_date_select.git
+ * Silksprite
+   Included in this project
+ 
+   
+Filenames
+=========
+When installing this plugin, all stylesheets, images and javascripts used by Wufoo are copied to the public directory.
+All filenames are kept intact, so when a naming conflict is detected, all present files will be replaced. The only change
+made to the original Wufoo setup, is the names of directories the files are placed in:
+
+  Wufoo setup    Rails setup
+  --------------------------
+  /css           /stylesheets
+  /images        /images
+  /scripts       /javascripts
+
+Example
+=======
+
+Example goes here.
+
+
+Themes
+======
+
+ 1 - 
+ 2 - Gray
+ 3 - Recycled Air
+ 4 - Egg
+ 5 - Orange
+ 6 - Light Green
+ 7 - Dark Green
+ 8 - Bluish
+ 9 - Indigo
+10 - Violet
+11 - Purple
+12 - Pink
+13 - Red
+14 - Ketchup
+15 - Mustard
+16 - Chocolate
+17 - Graphite
+18 -
+19 -
+20 - Summer
+21 -
+22 -
+23 - 
+24 - 
+25 - 
+26 -
+27 - Firenze
+28 - Flower Shop
+29 - Japanese Garden
+30 - Cubicle Blue
+31 - Pistachio
+32 - Citrus
+33 - Sandy Beach
+34 - Watermelon
+35 - Cheesecake
+36 - Granny Smith Apple
+37 - Ocean Sunset
+38 - Purple Dress
+39 - Garden Pool
+40 - Marie Antoinette
+41 - Herbs and Spice
+42 - Robotron
+43 - Down to Earth
+44 - Modern Office
+45 - Scandinavian Woodworks
+46 - Amber Waves
+47 - Banana Flambe
+48 - Corn Roast
+49 - Autumn an Empire
+50 - Sailboat
+51 - Candid
+52 - Baked
+53 - Halow Summer
+54 - Range Rover
+55 - Cupacabra
+56 - Artificial Growth
+57 - 
+58 - Tree Viper
+59 - 
+60 - Happy Holidays
+61 - 
+62 - Christmas Wishes
+63 - Old Man Winter
+
+Copyright (c) 2008 [name of plugin creator], released under the MIT license

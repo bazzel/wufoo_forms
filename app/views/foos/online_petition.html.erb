@@ -1,0 +1,19 @@
+<% title "Online Petition to Make a Difference" %>
+<% wufoo_form_for @foo, :url => foo_path('create'), :html => {:title => "Wufoo"} do |f| %>
+  <%= hidden_field_tag('page', 'online_petition') %>
+  <%= form_title(yield(:title), '<a href="">View Current Signatures</a>') -%>
+  <% content_tag :ul do -%>
+    <%= f.error_messages %>
+    <%= f.section 'To: The People Who Decide these Things', 'I think MacGuyver should be brought back on the air and with new episodes.<br><br>Sincerely, <br>', true %>
+    
+    <% f.box :req_field_1, :label => "Name" do -%>
+      <%= f.text_field :req_field_2, :label => 'First', :size => 8 %>
+      <%= f.text_field :req_field_3, :label => 'Last', :size => 14 %>
+    <% end -%>
+    <%= f.text_field :req_field_4, :length => 'large', :label => "Email" %>
+    <%= f.text_area :field_1, :length => 'large', :label => "Comments" %>
+
+    <%= f.section '', 'All information you provide on this petition signing form will be public on the petition signatures page, except your email address.' %>
+    <%= f.submit %>
+  <% end %>
+<% end %>

@@ -1,0 +1,20 @@
+<% title "Foos" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Start</th>
+    <th>Finish</th>
+    <th>Contact</th>
+    <th>Description</th>
+  </tr>
+  <% for foo in @foos %>
+    <tr>
+      <td><%=h foo.field_title %></td>
+      <td><%= link_to "Edit", edit_foo_path(foo) %></td>
+      <td><%= link_to "Destroy", foo, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Foo", new_foo_path %></p>

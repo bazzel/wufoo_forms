@@ -1,0 +1,11 @@
+<% title "Contact Form" %>
+<% wufoo_form_for @foo, :url => foo_path('create'), :html => {:title => "Wufoo"} do |f| %>
+  <%= hidden_field_tag('page', 'contact_form') %>
+  <%= form_title yield(:title), '<div></div>' -%>
+  <% content_tag :ul do -%>
+    <%= f.error_messages %>
+    <%= f.text_area :req_field_1, :label => "Message" %>
+    <%= f.text_field :field_2, :length => 'large', :label => "Email Address" %>
+  <%= f.submit %>
+  <% end %>
+<% end %>
