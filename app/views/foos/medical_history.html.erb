@@ -1,0 +1,44 @@
+<% title "Patient Medical History" %>
+<% wufoo_form_for @foo, :url => foo_path('create'), :html => {:title => "Wufoo"} do |f| %>
+  <%= hidden_field_tag('page', 'medical_history') %>
+  <%= form_title yield(:title) -%>
+  <% content_tag :ul do -%>
+    <%= f.error_messages %>
+    <% f.box :field_1, :label => "Name", :position => 'left' do -%>
+      <%= f.text_field :field_2, :label => 'First', :size => 8 %>
+      <%= f.text_field :field_3, :label => 'Last', :size => 14 %>
+    <% end -%>
+    <%= f.calendar_date_select :field_4, 
+                                :year_range => 0.year.from_now..1.year.from_now, 
+                                :buttons => false,
+                                :label => 'Date',
+                                :position => 'right' %>
+    <%= f.text_area :field_5, :label => " Reason for Today's Visit " %>
+    <% f.check_box_group :field_6, :label => ' Check all that apply to you or your immediate family (parents, siblings, grandparents) ' do %>
+      <% ['Asthma / Lung Problems', 'Cancer', 'Cardiac Disease', 'Diabetes', 'History of Back Pain', 'Hypertension', 'Psychiatric Disorders', 'Seizure Disorder', 'Stroke'].each do |e| -%>
+				  <%= f.check_box_tag("for[bar_ids][]", 
+            								  e, 
+            								  false, 
+            								  :label => e ) %>
+      <% end -%>
+    <% end -%>
+
+    <% f.check_box_group :field_7, :label => ' Check all symptoms you are currently experiencing ' do %>
+      <% ['Allergy', 'Cardiovascular', 'Chest Pain', 'Connective Tissue Disease', 'Diabetes Mellitus', 'Eating Disorder', 'Ear / Nose / Throat', 'Eye', 'Fever', 'Gastrointestinal', 'Genitourinary', 'Hemtalogical', 'Lymphatic', 'Musculoskeletal Pain', 'Neurological', 'Psychiatric', 'Respiratory', 'Skin', 'Weight Gain', 'Weight Loss'].each do |e| -%>
+				  <%= f.check_box_tag("for[bar_ids][]", 
+            								  e, 
+            								  false, 
+            								  :label => e ) %>
+      <% end -%>
+    <% end -%>
+
+    <%= f.text_area :field_8, :label => " Please list any medication allergies that you have :  " %>
+    <%= f.text_area :field_9, :label => " Please list any medications you are currently taking (and dosage if known) : " %>
+    <%= f.select :field_10, 
+  								['Yes', 'No'], 
+  								{ :include_blank => true },
+  								:label => ' If you are a woman, are you currently pregnant, or is there a possibility that you are pregnant? ' %>
+
+    <%= f.submit %>
+  <% end %>
+<% end %>

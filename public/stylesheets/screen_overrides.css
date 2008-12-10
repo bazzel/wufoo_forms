@@ -7,6 +7,15 @@ line-height:1;
 font-family:"Lucida Grande",Tahoma,Arial,sans-serif;
 }
 
+.wufoo label{
+	font-weight: normal;
+}
+
+.wufoo label.desc{
+	font-weight:bold;
+}
+
+
 .wufoo input.text:focus,.wufoo textarea:focus,.wufoo select:focus {
 border-color:#7C7C7C #C3C3C3 #DDDDDD;
 border-style:solid;

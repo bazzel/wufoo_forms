@@ -48,8 +48,8 @@ class WufooFormBuilder < ActionView::Helpers::FormBuilder
     options[:class] = "field text "
 
     if @box
-      prefix = options[:prefix] ? " #{options[:prefix]} " : ""
-      suffix = options[:suffix] ? " #{options[:suffix]} " : ""
+      prefix = options[:prefix] ? " #{options.delete(:prefix)} " : ""
+      suffix = options[:suffix] ? " #{options.delete(:suffix)} " : ""
       label = label(method, label_text_only(method, options.delete(:label)))
       @template.content_tag(:span, prefix + super + suffix + label)
     elsif @canvas
@@ -206,7 +206,6 @@ class WufooFormBuilder < ActionView::Helpers::FormBuilder
     end
     
     @box = false
-    # options[:class] = li_class(options)
     @template.concat @template.content_tag(:li, content, options), block.binding
   end
 
@@ -235,28 +234,28 @@ class WufooFormBuilder < ActionView::Helpers::FormBuilder
   private 
   def build_shell(field, options)
     instruct = tooltip(options)
+    lc = li_class options
     element = @template.content_tag(:div, yield) + instruct
     
-    lc = li_class options
-    
-    @template.capture do
-      label = label(field, label_text(field, options.delete(:label)), :class => 'desc')
-      locals = {
-        :element => element,
-        :label   => label,
-        :li_class => lc
-      }
-      if has_errors_on?(field)
-        locals.merge!(:error => error_message(field, options))
-        @template.render :file => "#{Wufoo::PLUGIN_VIEWS_PATH}/#{@@err_partial}.html.erb", 
-                         :locals  => locals, 
-                         :use_full_path => false
-      else
-        @template.render :file => "#{Wufoo::PLUGIN_VIEWS_PATH}/#{@@partial}.html.erb", 
-                         :locals  => locals, 
-                         :use_full_path => false
-      end
+    # @template.capture do
+    label = label(field, label_text(field, options.delete(:label)), :class => 'desc')
+    locals = {
+      :element => element,
+      :label   => label,
+      :li_class => lc
+    }
+    if has_errors_on?(field)
+      locals.merge!(:error => error_message(field, options))
+      filename = @@err_partial
+    else
+      filename = @@partial
     end
+    
+    @template.render :file => "#{Wufoo::PLUGIN_VIEWS_PATH}/#{filename}.html.erb", 
+                     :locals  => locals, 
+                     :use_full_path => false
+      
+    # end
   end
 
   def error_message(field, options)
