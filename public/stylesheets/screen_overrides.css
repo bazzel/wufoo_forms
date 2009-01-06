@@ -70,14 +70,18 @@ padding:0;
 width:100%;
 }
 
+
 .calendar_date_select th, .calendar_date_select td {
  padding:0;
  }
  
  /* Experimental */
- /*.wufoo ul li {
+/* .wufoo ul li {
    border:1px dotted transparent;
    }
  .wufoo ul li:hover {
   border: 1px dashed #000;
- }*/
+ }
+*/ 
+.wufoo div.child { border: 1px dashed transparent;}
+.wufoo div.child:hover { border: 1px dashed #3B699F !important;}

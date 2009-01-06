@@ -90,22 +90,6 @@ module WufooHelper
     concat(bottom, proc.binding)
   end
   
-  # Retourneert een link voor het uitbreiden
-  # van een subform met een partial voor object.
-  # >> add_sub_link "Categorie toevoegen", 
-  #                 :categories, 
-  #                 :object => Category, :partial => 'category'
-  def add_sub_link(name, id, options) 
-    content_tag :li, :class => 'buttons' do
-      link_to_function "#{image_tag('icons/add.png')} #{name}", :class => 'positive' do |page| 
-          page.insert_html :bottom, 
-                         id, 
-                         :partial => options[:partial], 
-                         :object => options[:object].new 
-      end 
-    end
-  end 
-
   def wufoo_stylesheet(object_or_id = nil)
     theme = theme_for(object_or_id) || 'theme'
     

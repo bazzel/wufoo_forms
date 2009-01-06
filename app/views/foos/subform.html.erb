@@ -1,0 +1,15 @@
+<% title "Title" %>
+<% wufoo_form_for @foo, :url => foo_path('create'), :html => {:title => "Wufoo"} do |f| %>
+  <%= hidden_field_tag('page', 'subform') %>
+  <%= form_title(yield(:title), 'Description') -%>
+  <% content_tag :ul do -%>
+    <%= f.section 'Section Title', 'Description of the section.', true %>
+    <%= f.error_messages %>
+    <%= f.text_area :req_field_1, :label => 'Field Title' %>
+    <%= f.text_field :field_3, :length => 'medium', :label => "Medium Field" %>
+
+  	<%= render :partial => 'bars' %>
+
+    <%= f.submit "Save", :cancel => {:title => 'Cancel', :url => foo_path('index') } %>
+  <% end -%>
+<% end -%>

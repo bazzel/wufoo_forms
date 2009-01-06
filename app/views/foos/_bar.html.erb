@@ -1,0 +1,13 @@
+<% new_or_existing = bar.new_record? ? 'new' : 'existing' -%>
+<% prefix = "foo[#{new_or_existing}_bar_attributes][]" -%>
+<div class='bar child'> 
+  	<% fields_for prefix, bar, {:builder => WufooFormBuilder} do |bar_form| -%> 
+  	<%= bar_form.text_field :req_field_0, :position => 'left' %>
+  	<%= bar_form.text_field :req_field_1, :position => 'right' %>
+  <% end -%> 
+  
+<% buttons do %>
+  <%= link_to("#{ss_span('application_form_delete')} Remove", '', :class => 'button remove') %>
+<% end %>
+
+</div>

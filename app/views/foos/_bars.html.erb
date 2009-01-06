@@ -1,0 +1,25 @@
+<% content_for :jquery do %>
+  <% javascript_tag do -%>	
+    jQuery(document).ready(function($){
+    $('#add_bar').click(function(){
+      $("#bars").append("<%= escape_javascript(render(:partial => 'bar', :object => Bar.new)) %>");
+          return false;
+      });
+      
+      $('a.remove') 
+          .livequery('click', function(event) { 
+            if (confirm('Are you sure?'))
+            {
+              $(this).parents('.child').slideUp("normal", function() {$(this).remove()});
+            }
+            return false; 
+          });
+	});
+  <% end -%>
+<% end %>
+
+<%= section 'Bars', '<p>Description</p>' -%>
+<div id="bars"> 
+	<%= render :partial => 'bar', :collection => @foo.bars %> 
+</div>
+<%= add_sub_link "Add bar" %>
